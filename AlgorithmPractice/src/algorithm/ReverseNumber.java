@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.Scanner;
-
 public class ReverseNumber {
 
     public int reverse(int x){
@@ -13,9 +11,13 @@ public class ReverseNumber {
 
                 reverseNumber = reverseNumber * 10 + x % 10;//1模除100等于1 1模除50等于1 1模除2等于1 一个数 模除 比自身大的数 都等于它自身
                                                             //所以 1 % 10 = 1
-
                 x /= 10;
             }
+
+        if (Math.abs(reverseNumber) > ((1 << 31) - 1) / 10){//判断溢出
+
+            return 0;
+        }
 
 //            else if (x % 10 != (int)(Math.random()*10)){
         return reverseNumber;
@@ -25,8 +27,8 @@ public class ReverseNumber {
 
         ReverseNumber reverseNumber = new ReverseNumber();
 
-        int value = reverseNumber.reverse(-123);
+        int value = reverseNumber.reverse(12345);
 
-        System.out.println(value);
+        System.out.println(value);//打印结果
     }
 }
